@@ -11,12 +11,22 @@ const routes = [
     component: Home
   },
   {
+    path: '/blog/:id',
+    name: 'Blog',
+    component: () => import(/* webpackChunkName: "blog" */ '../views/Blog.vue')
+  },
+  {
     path: '/about',
     name: 'About',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+  },
+  {
+    // 会匹配所有路径
+    path: '*',
+    redirect: '/'
   }
 ]
 
