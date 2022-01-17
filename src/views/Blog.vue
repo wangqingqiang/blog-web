@@ -95,11 +95,9 @@ export default {
   code.hljs {
     border-radius: 6px;
   }
-  h1, h2, h3 {
-    padding-bottom: 6px;
-    margin: 36px 0;
-  }
   h1, h2 {
+    padding-bottom: 6px;
+    margin: 30px 0;
     border-bottom: 1px solid #e6ecf0;
   }
 }

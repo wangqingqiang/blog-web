@@ -29,12 +29,12 @@ export default {
 </style>
 <style lang="less" scoped>
 .main-container {
-  height: calc(100vh - 63px);
+  min-height: calc(100vh - 63px);
   width: 70%;
   min-width: 600px;
   max-width: 900px;
   box-sizing: border-box;
-  padding: 20px 20px 60px;
+  padding: 20px 20px 50px;
   margin: 0 auto;
 }
 </style>
