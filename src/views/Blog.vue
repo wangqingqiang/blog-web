@@ -11,7 +11,6 @@
 <script>
 import { marked } from 'marked';
 import { getBlogById } from '@/api/index.js'
-import 'highlight.js/styles/github-dark-dimmed.css';
 
 export default {
   data() {
@@ -34,10 +33,7 @@ export default {
     }
   },
   created() {
-    let id = this.$route.params.id;
-    if (!id) {
-      return this.$router.repalce({path: '/'})
-    }
+    this.blog.id = this.$route.params.id;
 
     marked.setOptions({
       renderer: new marked.Renderer(),
@@ -60,9 +56,13 @@ export default {
   },
   methods: {
     getBlog() {
-      getBlogById(this.$route.params.id).then((res) => {
-        this.blog = { ...res.data.data }
-        this.blog.content = marked.parse(this.blog.content)
+      getBlogById(this.blog.id).then((res) => {
+        if (res.data && res.data.data) {
+          this.blog = { ...res.data.data }
+          this.blog.content = marked.parse(this.blog.content)
+        } else {
+          this.$router.replace({path: '/'})
+        }
       })
     }
   }
@@ -70,6 +70,8 @@ export default {
 </script>
 
 <style lang="less">
+@import '~highlight.js/styles/github-dark-dimmed.css';
+
 .blog-container {
   .title {
     font-size: 32px;
