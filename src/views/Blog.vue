@@ -9,9 +9,8 @@
 </template>
 
 <script>
-import data from '@/data.js';
 import { marked } from 'marked';
-import axios from 'axios';
+import { getBlogById } from '@/api/index.js'
 import 'highlight.js/styles/github-dark-dimmed.css';
 
 export default {
@@ -39,7 +38,6 @@ export default {
     if (!id) {
       return this.$router.repalce({path: '/'})
     }
-    this.blog = { ...data.blogs[0], content: data.content };
 
     marked.setOptions({
       renderer: new marked.Renderer(),
@@ -62,11 +60,8 @@ export default {
   },
   methods: {
     getBlog() {
-      axios.get('http://localhost:3333/blog')
-      .then((res) => {
-        // handle success
-        console.log(res.data);
-        this.blog.content = res.data.content;
+      getBlogById(this.$route.params.id).then((res) => {
+        this.blog = { ...res.data.data }
         this.blog.content = marked.parse(this.blog.content)
       })
     }
@@ -78,7 +73,7 @@ export default {
 .blog-container {
   .title {
     font-size: 32px;
-    font-weight: 400;
+    font-weight: bold;
   }
   .info {
     margin-top: 4px;
@@ -97,6 +92,13 @@ export default {
   }
   code.hljs {
     border-radius: 6px;
+  }
+  h1, h2, h3 {
+    padding-bottom: 6px;
+    margin: 36px 0;
+  }
+  h1, h2 {
+    border-bottom: 1px solid #e6ecf0;
   }
 }
 </style>

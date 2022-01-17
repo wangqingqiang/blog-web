@@ -14,7 +14,7 @@
 <script>
 // @ is an alias to /src
 import BlogList from '@/components/BlogList.vue'
-import data from '@/data.js';
+import { getBlogList } from '@/api/index.js'
 
 export default {
   name: 'Home',
@@ -27,7 +27,14 @@ export default {
     }
   },
   created() {
-    this.blogs = data.blogs;
+    this.getBlogList();
+  },
+  methods: {
+    getBlogList() {
+      getBlogList().then((res) => {
+        this.blogs = res.data.data;
+      })
+    }
   }
 }
 </script>
