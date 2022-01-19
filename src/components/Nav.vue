@@ -15,7 +15,8 @@ export default {
 
 <style lang="less" scoped>
 .nav {
-  padding: 20px 0;
+  height: 60px;
+  line-height: 60px;
   background: #26272b;
   .link {
     width: 70%;
