@@ -1,8 +1,9 @@
 <template>
   <div id="app">
-    <Nav />
-    <div class="main-container">
-      <router-view/>
+    <Nav v-if="!isWriting" />
+    <router-view/>
+    <div class="footer" v-if="!isWriting">
+      这里是页脚
     </div>
   </div>
 </template>
@@ -15,26 +16,25 @@ export default {
   name: 'App',
   components: {
     Nav
+  },
+  computed: {
+    isWriting() {
+      let routeName = [ 'AddBlog', 'EditBlog']
+      if (routeName.includes(this.$route.name)) {
+        return true;
+      }
+      return false;
+    }
   }
 }
 </script>
 
-<style lang="less">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-}
-</style>
 <style lang="less" scoped>
-.main-container {
-  min-height: calc(100vh - 63px);
-  width: 70%;
-  min-width: 600px;
-  max-width: 900px;
-  box-sizing: border-box;
-  padding: 20px 20px 50px;
-  margin: 0 auto;
+.footer {
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  color: rgba(255,255,255,.7);
+  background: #26272b;
 }
 </style>

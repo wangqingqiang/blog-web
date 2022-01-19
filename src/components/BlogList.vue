@@ -1,5 +1,5 @@
 <template>
-  <div class="blog-list-container">
+  <div>
     <Blog v-for="blog in blogs" :key="blog.id" :blog="blog" />
   </div>
 </template>

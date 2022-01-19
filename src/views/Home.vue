@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="container home">
     <BlogList class="blogs" :blogs="blogs" />
     <div class="tags">
       <ul>

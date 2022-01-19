@@ -1,5 +1,5 @@
 <template>
-  <div class="blog-container">
+  <div class="container blog-container">
     <div class="title">{{ blog.title }}</div>
     <div class="info">
       作者：{{ blog.author }} | 发表于：{{ time }}
