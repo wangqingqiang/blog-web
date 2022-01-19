@@ -129,7 +129,7 @@ export default {
       addBlog({ id: this.id, title: this.title, content }).then(res => {
         const data = res.data;
         if (data.success) {
-          this.$router.replace({path: '/'})
+          this.$router.push({path: '/'})
         }
       })
     },

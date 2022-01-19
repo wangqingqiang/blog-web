@@ -4,7 +4,7 @@
     <div class="info">
       作者：{{ blog.author }} | 发表于：{{ time }}
     </div>
-    <div class="desc">{{ blog.desc }}</div>
+    <div class="desc">{{ blog.description }}</div>
   </div>
 </template>
 
